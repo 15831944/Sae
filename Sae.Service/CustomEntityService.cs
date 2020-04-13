@@ -44,6 +44,9 @@ namespace Sae.Service
                 case TipoBloco.BEAM14x19x44:
                     list = GetBe14X19X44();
                     break;
+                case TipoBloco.BEAM14x19x54:
+                    list = GetBe14X19X54();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(tipo), tipo, null);
             }
@@ -1240,6 +1243,260 @@ namespace Sae.Service
             var attDefNome = new AttributeDefinition
             {
                 Position = new Point3d(0.22, -0.0609, 0.0000),
+                Verifiable = true,
+                Prompt = "Digite o nome: ",
+                Tag = "N",
+
+                TextString = TipoBloco.BEAM14x19x44.ToString(),
+                Height = 0.03,
+                Justify = AttachmentPoint.BottomLeft,
+
+                Invisible = true,
+                TextStyleId = _textRepository.GetTextStyleByName()
+            };
+            attDefNome.AdjustAlignment(HostApplicationServices.WorkingDatabase);
+            attDefNome.AlignmentPoint = new Point3d(0.22, -0.0609, 0.0000);
+
+            ((List<AttributeDefinition>)_atributos).AddRange(new List<AttributeDefinition>
+            {
+                attDefLargura,
+                attDefAltura,
+                attDefComprimento,
+                attDefAlturaParede,
+                attDefQuantidade,
+                attDefNome
+            });
+            return new Tuple<ICollection<Entity>, ICollection<AttributeDefinition>>(entitiesList, _atributos);
+        }
+
+        private Tuple<ICollection<Entity>, ICollection<AttributeDefinition>> GetBe14X19X54()
+        {
+            var entitiesList = new List<Entity>();
+            var acPolyExt = new Polyline();
+            acPolyExt.AddVertexAt(0, new Point2d(0.0000, 0.0000), 0, 0, 0);
+            acPolyExt.AddVertexAt(1, new Point2d(0.0000, 0.1400), 0, 0, 0);
+            acPolyExt.AddVertexAt(2, new Point2d(0.5400, 0.1400), 0, 0, 0);
+            acPolyExt.AddVertexAt(3, new Point2d(0.5400, 0.0000), 0, 0, 0);
+            acPolyExt.Closed = true;
+
+            var acPolyInt = new Polyline();
+            acPolyInt.AddVertexAt(0, new Point2d(0.1650, 0.1150), 0, 0, 0);
+            acPolyInt.AddVertexAt(1, new Point2d(0.0250, 0.1150), 0, 0, 0);
+            acPolyInt.AddVertexAt(2, new Point2d(0.0250, 0.0250), 0, 0, 0);
+            acPolyInt.AddVertexAt(3, new Point2d(0.1650, 0.0250), 0, 0, 0);
+            acPolyInt.Closed = true;
+
+            var acPolyInt2 = new Polyline();
+            acPolyInt2.AddVertexAt(0, new Point2d(0.3750, 0.1150), 0, 0, 0);
+            acPolyInt2.AddVertexAt(1, new Point2d(0.5150, 0.1150), 0, 0, 0);
+            acPolyInt2.AddVertexAt(2, new Point2d(0.5150, 0.0250), 0, 0, 0);
+            acPolyInt2.AddVertexAt(3, new Point2d(0.3750, 0.0250), 0, 0, 0);
+            acPolyInt2.Closed = true;
+
+            var acPolyInt3 = new Polyline();
+            acPolyInt3.AddVertexAt(0, new Point2d(0.3150, 0.0250), 0, 0, 0);
+            acPolyInt3.AddVertexAt(1, new Point2d(0.2250, 0.0250), 0, 0, 0);
+            acPolyInt3.AddVertexAt(2, new Point2d(0.2250, 0.1150), 0, 0, 0);
+            acPolyInt3.AddVertexAt(3, new Point2d(0.3150, 0.1150), 0, 0, 0);
+            acPolyInt3.Closed = true;
+
+            var acCirc1 = new Circle
+            {
+                Center = new Point3d(0.5275, 0.0125, 0),
+                Radius = Radius
+            };
+
+            var acCirc2 = new Circle
+            {
+                Center = new Point3d(0.0125, 0.0125, 0),
+                Radius = Radius
+            };
+
+            var acPol1 = new Polyline();
+            acPol1.AddVertexAt(0, new Point2d(0.5150, 0.0250), 0, 0, 0);
+            acPol1.AddVertexAt(1, new Point2d(0.5400, 0.0250), 0, 0, 0);
+
+            var acPol2 = new Polyline();
+            acPol2.AddVertexAt(0, new Point2d(0.5150, 0.0250), 0, 0, 0);
+            acPol2.AddVertexAt(1, new Point2d(0.5150, 0.0000), 0, 0, 0);
+
+            var acPol3 = new Polyline();
+            acPol3.AddVertexAt(0, new Point2d(0.4683, 0.0250), 0, 0, 0);
+            acPol3.AddVertexAt(1, new Point2d(0.4683, 0.0000), 0, 0, 0);
+
+            var acPol4 = new Polyline();
+            acPol4.AddVertexAt(0, new Point2d(0.4217, 0.0250), 0, 0, 0);
+            acPol4.AddVertexAt(1, new Point2d(0.4217, 0.0000), 0, 0, 0);
+
+            var acPol5 = new Polyline();
+            acPol5.AddVertexAt(0, new Point2d(0.3750, 0.0550), 0, 0, 0);
+            acPol5.AddVertexAt(1, new Point2d(0.3750, 0.0000), 0, 0, 0);
+
+            var acPol6 = new Polyline();
+            acPol6.AddVertexAt(0, new Point2d(0.3450, 0.0550), 0, 0, 0);
+            acPol6.AddVertexAt(1, new Point2d(0.3450, 0.0000), 0, 0, 0);
+
+            var acPol7 = new Polyline();
+            acPol7.AddVertexAt(0, new Point2d(0.3750, 0.0550), 0, 0, 0);
+            acPol7.AddVertexAt(1, new Point2d(0.3150, 0.0550), 0, 0, 0);
+
+            var acPol8 = new Polyline();
+            acPol8.AddVertexAt(0, new Point2d(0.3150, 0.0250), 0, 0, 0);
+            acPol8.AddVertexAt(1, new Point2d(0.3150, 0.0000), 0, 0, 0);
+
+            var acPol9 = new Polyline();
+            acPol9.AddVertexAt(0, new Point2d(0.2700, 0.0250), 0, 0, 0);
+            acPol9.AddVertexAt(1, new Point2d(0.2700, 0.0000), 0, 0, 0);
+
+            var acPol10 = new Polyline();
+            acPol10.AddVertexAt(0, new Point2d(0.2250, 0.0250), 0, 0, 0);
+            acPol10.AddVertexAt(1, new Point2d(0.2250, 0.0000), 0, 0, 0);
+
+            var acPol11 = new Polyline();
+            acPol11.AddVertexAt(0, new Point2d(0.1950, 0.0550), 0, 0, 0);
+            acPol11.AddVertexAt(1, new Point2d(0.1950, 0.0000), 0, 0, 0);
+
+            var acPol12 = new Polyline();
+            acPol12.AddVertexAt(0, new Point2d(0.1650, 0.0550), 0, 0, 0);
+            acPol12.AddVertexAt(1, new Point2d(0.2250, 0.0550), 0, 0, 0);
+
+            var acPol13 = new Polyline();
+            acPol13.AddVertexAt(0, new Point2d(0.1650, 0.0250), 0, 0, 0);
+            acPol13.AddVertexAt(1, new Point2d(0.1650, 0.0000), 0, 0, 0);
+
+            var acPol14 = new Polyline();
+            acPol14.AddVertexAt(0, new Point2d(0.1183, 0.0250), 0, 0, 0);
+            acPol14.AddVertexAt(1, new Point2d(0.1183, 0.0000), 0, 0, 0);
+
+            var acPol15 = new Polyline();
+            acPol15.AddVertexAt(0, new Point2d(0.0717, 0.0250), 0, 0, 0);
+            acPol15.AddVertexAt(1, new Point2d(0.0717, 0.0000), 0, 0, 0);
+
+            var acPol16 = new Polyline();
+            acPol16.AddVertexAt(0, new Point2d(0.0250, 0.0250), 0, 0, 0);
+            acPol16.AddVertexAt(1, new Point2d(0.0250, 0.0000), 0, 0, 0);
+
+            var acPol17 = new Polyline();
+            acPol17.AddVertexAt(0, new Point2d(0.0250, 0.0250), 0, 0, 0);
+            acPol17.AddVertexAt(1, new Point2d(0.0000, 0.0250), 0, 0, 0);
+
+            var tmpList = new List<Entity>
+            {
+                acCirc1, acCirc2, acPol1, acPol2, acPol3, acPol4, acPol5, acPol6, acPol7, acPol8,
+                acPol9, acPol10, acPol11, acPol12, acPol13, acPol14, acPol15, acPol16, acPol17
+            };
+
+            entitiesList.Add(acPolyExt);
+            entitiesList.Add(acPolyInt);
+            entitiesList.Add(acPolyInt2);
+            entitiesList.Add(acPolyInt3);
+
+            entitiesList.AddRange(tmpList);
+            entitiesList.AddRange(from entity in tmpList
+                                  let acPtFrom = new Point3d(0.4150, 0.0700, 0)
+                                  let acPtTo = new Point3d(0.4400, 0.0700, 0)
+                                  let acLine3d = new Line3d(acPtFrom, acPtTo)
+                                  select entity.GetTransformedCopy(Matrix3d.Mirroring(acLine3d)));
+
+            var acPol18 = new Polyline();
+            acPol18.AddVertexAt(0, new Point2d(0.0250, 0.0700), 0, 0, 0);
+            acPol18.AddVertexAt(1, new Point2d(0.0000, 0.0700), 0, 0, 0);
+
+            var acPol19 = new Polyline();
+            acPol19.AddVertexAt(0, new Point2d(0.5150, 0.0700), 0, 0, 0);
+            acPol19.AddVertexAt(1, new Point2d(0.5400, 0.0700), 0, 0, 0);
+
+            entitiesList.Add(acPol18);
+            entitiesList.Add(acPol19);
+
+            var attDefLargura = new AttributeDefinition
+            {
+                Position = new Point3d(0.5583, 0.2017, 0.0000),
+                Verifiable = true,
+                Prompt = "Digite a largura: ",
+                Tag = "L",
+
+                TextString = "L=0.14",
+                Height = 0.03,
+                Justify = AttachmentPoint.BottomLeft,
+
+                Invisible = true,
+                TextStyleId = _textRepository.GetTextStyleByName()
+            };
+            attDefLargura.AdjustAlignment(HostApplicationServices.WorkingDatabase);
+            attDefLargura.AlignmentPoint = new Point3d(0.5583, 0.2017, 0.0000);
+
+            var attDefAltura = new AttributeDefinition
+            {
+                Position = new Point3d(0.5583, 0.1517, 0.0000),
+                Verifiable = true,
+                Prompt = "Digite a altura: ",
+                Tag = "A",
+
+                TextString = "A=0.19",
+                Height = 0.03,
+                Justify = AttachmentPoint.BottomLeft,
+
+                Invisible = true,
+                TextStyleId = _textRepository.GetTextStyleByName()
+            };
+            attDefAltura.AdjustAlignment(HostApplicationServices.WorkingDatabase);
+            attDefAltura.AlignmentPoint = new Point3d(0.5583, 0.1517, 0.0000);
+
+            var attDefComprimento = new AttributeDefinition
+            {
+                Position = new Point3d(0.5583, 0.1017, 0.0000),
+                Verifiable = true,
+                Prompt = "Digite o comprimento: ",
+                Tag = "C",
+
+                TextString = "C=0.44",
+                Height = 0.03,
+                Justify = AttachmentPoint.BottomLeft,
+
+                Invisible = true,
+                TextStyleId = _textRepository.GetTextStyleByName()
+            };
+            attDefComprimento.AdjustAlignment(HostApplicationServices.WorkingDatabase);
+            attDefComprimento.AlignmentPoint = new Point3d(0.5583, 0.1017, 0.0000);
+
+            var attDefAlturaParede = new AttributeDefinition
+            {
+                Position = new Point3d(0.5583, 0.0517, 0.0000),
+                Verifiable = true,
+                Prompt = "Digite altura da parede: ",
+                Tag = "AP",
+
+                TextString = "AP=2.80",
+                Height = 0.03,
+                Justify = AttachmentPoint.BottomLeft,
+
+                Invisible = true,
+                TextStyleId = _textRepository.GetTextStyleByName()
+            };
+            attDefAlturaParede.AdjustAlignment(HostApplicationServices.WorkingDatabase);
+            attDefAlturaParede.AlignmentPoint = new Point3d(0.5583, 0.0517, 0.0000);
+
+            var attDefQuantidade = new AttributeDefinition
+            {
+                Position = new Point3d(0.5583, 0.0017, 0.0000),
+                Verifiable = true,
+                Prompt = "Digite a quantidade: ",
+                Tag = "Q",
+
+                TextString = "Q=14",
+                Height = 0.03,
+                Justify = AttachmentPoint.BottomLeft,
+
+                Invisible = true,
+                TextStyleId = _textRepository.GetTextStyleByName()
+            };
+            attDefQuantidade.AdjustAlignment(HostApplicationServices.WorkingDatabase);
+            attDefQuantidade.AlignmentPoint = new Point3d(0.5583, 0.0017, 0.0000);
+
+            var attDefNome = new AttributeDefinition
+            {
+                Position = new Point3d(0.27, -0.0609, 0.0000),
                 Verifiable = true,
                 Prompt = "Digite o nome: ",
                 Tag = "N",
