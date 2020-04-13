@@ -7,7 +7,7 @@
         BE14x19x34 = 3,
         BE14x19x39 = 4,
         BEAM14x19x44 = 5,
-        //BEAM14x19x54 = 6,
+        BEAM14x19x54 = 6,
         //BECU = 7,
         //BECJ = 8,
         //BEEletrico = 9,
